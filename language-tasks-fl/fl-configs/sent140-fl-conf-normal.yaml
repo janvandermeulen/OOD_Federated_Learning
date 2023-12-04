@@ -5,7 +5,7 @@ text: True
 partitioning: iid
 arch: textBC
 loss: nll
-device: cuda:0
+device: cpu # cuda:0
 dataPath: "./data/sentiment-140/"
 #startCheckPoint: "./checkpoints/model_at_epoch_500_0.05_500_false.pt"
 #startCheckPoint: "./outputs/name_imdb_initLr_0.05_numFLEpochs_500/best_model.pt"

@@ -1,0 +1,6 @@
+{
+    "python.analysis.extraPaths": [
+        "./language-tasks-fl/src/fl-train",
+        "./language-tasks-fl/src"
+    ]
+}

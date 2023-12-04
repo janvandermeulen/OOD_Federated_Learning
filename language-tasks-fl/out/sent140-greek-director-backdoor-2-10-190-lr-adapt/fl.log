@@ -1,0 +1,4 @@
+INFO:root: noDefense: True
+INFO:root:Backdoor Train Size: 200 Backdoor Test Size: 120
+INFO:root:size of test data 340
+INFO:root:attack from epoch 101

@@ -15,6 +15,7 @@ Tested stable depdencises:
 * cuDNN 7.5.1
 * NLTK 3.4
 * preprocessor 1.1.3
+* pyyaml --> I added this
 
 ### Data Preparation
 ---
@@ -29,3 +30,13 @@ To run `fl_runner.py` please use the following command
 ### Parameters Description 
 Please refer to file `./fl-configs/sent140-fl-conf-greek-director-backdoor.yaml` for detailed description of configuration parameters.
 
+### How to run
+1. First follow the extra instructions in the readme file for data preperation.
+2. Comment out the code related to the hate speech model in `globalUtils.py` because the model is missing. 
+3. Add `import models` in `globalUtils.py`.
+4. `pip install pyyaml` which is not specified in the dependencies -_-.
+5. In `datasets.py` comment out the parts about IMDBdata and FEMNISTdata.
+6. In the model `text_binary_classification.py` you need to change line 74 to false if you don´t have cuda.
+```
+74. train_on_gpu= False # True
+```

@@ -15,18 +15,18 @@ stop_words = set(stopwords.words('english'))
 english_words = set(nltk.corpus.words.words())
 import pandas as pd
 import re
-#import preprocessor as tpp
+import preprocessor as tpp
 import pickle
 import sys
 #from .partitioner import Partition
 print(sys.path)
-exit(0)
+# exit(0)
 dataDir = '../../data/sentiment-140/'
 
 #fractionOfTrain = float(sys.argv[1])
 #th = int(sys.argv[2])
-fractionOfTrain = 1.0
-th = 40
+fractionOfTrain = 0.25 # Original 1.0
+th = 0 # Original 40
 
 seq_length = 100
         

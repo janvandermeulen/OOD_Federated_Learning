@@ -71,7 +71,7 @@ class TextBinaryClassificationModel(nn.Module):
         # Create two new tensors with sizes n_layers x batch_size x hidden_dim,
         # initialized to zero, for hidden state and cell state of LSTM
         weight = next(self.parameters()).data
-        train_on_gpu= True
+        train_on_gpu= False # True
         
         if(train_on_gpu):
             hidden = (weight.new(self.numLayers, batchSize, self.hiddenDim).zero_().cuda(),
