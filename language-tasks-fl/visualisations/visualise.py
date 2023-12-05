@@ -2,26 +2,32 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 # Read the stats.csv file
-data = pd.read_csv('../outputs/sent140-normal-fl-th0_fr0.25_u1948_lr_0.05-yorogs-vocab/stats.csv')
+data = pd.read_csv('../out/sent140-greek-director-backdoor-2-10-190-lr-adapt/stats.csv')
 
+#### MAIN TASK ACCURACY
 # Extract the accuracy column
 accuracy = data['main_task_acc']
-
 # Create a line plot of the accuracy
-plt.plot(accuracy)
+# plt.plot(accuracy)
 
 # Set the plot title and labels
-plt.title('Accuracy')
-plt.xlabel('Epoch')
-plt.ylabel('Accuracy')
+# plt.title('Accuracy')
+# plt.xlabel('Epoch')
+# plt.ylabel('Accuracy')
 
-# Create a line plot of the accuracy whilst averaging
-# over 5 epochs
+# Create a line plot of the accuracy whilst averaging over 15 epochs
 # plt.plot(accuracy.rolling(15).mean())
-# Create an informative legend
-plt.legend(['Accuracy'])
+
 # Show the plot
 # plt.show()
+
+#### BACKDOOR ACCURACY
+backdoor_acc = data['backdoor_acc']
+plt.xlabel('Epoch')
+plt.ylabel('Backdoor Accuracy')
+plt.plot(backdoor_acc)
+plt.title('Backdoor Accuracy')
+
 # Save the visualization in the current folder
-plt.savefig('accuracy_baseline_precise_no_defense.png', dpi=300, bbox_inches='tight')
+plt.savefig('backdoor_accuracy_greek_director_nodefense.png', dpi=300, bbox_inches='tight')
 
