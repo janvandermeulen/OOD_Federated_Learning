@@ -82,6 +82,23 @@ class FLTrainer:
             self.attackerInitLr = conf['attackerTrainConfig']['initLr']
         elif(not self.backdoor is None and self.backdoor.startswith('single')):
             logger.info('Initialising training data for single character backdoor')   
+            #### TODO check if this is correct?
+            self.backdoorTrainData = self.dataset.backdoorTrainData
+            self.backdoorTestData  = self.dataset.backdoorTestData
+            logger.info('Backdoor Train Size: {} Backdoor Test Size: {}'
+                        .format(len(self.backdoorTrainData), len(self.backdoorTestData) ) )
+            
+            self.attackFreq   = conf['attackFreq']     
+
+            self.backdoorTrainLoader = DataLoader(self.backdoorTrainData, 
+                                                  batch_size=conf['attackerTrainConfig']['batchSize'], 
+                                                  shuffle=True, num_workers=1)
+            self.backdoorTestLoader  = DataLoader(self.backdoorTestData, 
+                                                  batch_size=conf['attackerTrainConfig']['testBatchSize'], num_workers=1)
+            
+            self.backdoor =True
+            self.numAdversaries = conf['numAdversaries']
+            self.attackerInitLr = conf['attackerTrainConfig']['initLr']
         else:
             self.attackFreq = None
         
