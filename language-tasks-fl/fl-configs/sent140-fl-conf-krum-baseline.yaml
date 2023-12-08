@@ -7,7 +7,8 @@ arch: textBC
 loss: nll
 device: cpu # cuda:0
 dataPath: "./data/sentiment-140/"
-# startCheckPoint: "./checkpoints/model_at_epoch_500_0.05_500_false.pt"
+defenseTechnique: krum
+#startCheckPoint: "./checkpoints/model_at_epoch_500_0.05_500_false.pt"
 #startCheckPoint: "./outputs/name_imdb_initLr_0.05_numFLEpochs_500/best_model.pt"
 
 modelParams:
@@ -66,13 +67,13 @@ numFLEpochs: 500
 
 enableCkpt: True
 
-ckptEpochs: [ 10, 50, 100, 200, 300, 400, 500 ]
+ckptEpochs: [ 100 ]
 
 #outputDir: $../../outputs/name_initLr_numFLEpochs_attack
-outputDir: ./out/single-character-test/
+outputDir: ./out/noattack-krum-baseline/
 
-attack: True
-backdoor: single-character-attack
-attackFreq: 10 #Attack once in attackFreq rounds
-numAdversaries: 3 #Number of attackers (usually out of 10)
-attackFromEpoch: 101 
+attack: False
+backdoor: greek-director-backdoor
+attackFreq: 10
+numAdversaries: 0
+
