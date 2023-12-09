@@ -71,7 +71,7 @@ enableCkpt: True
 ckptEpochs: [ 100, 300, 500 ]
 
 #outputDir: $../../outputs/name_initLr_numFLEpochs_attack
-outputDir: ./out/single-character-weakdp/
+outputDir: ./out/single-character-norm-clipping/
 
 attack: True
 backdoor: single-character-attack
