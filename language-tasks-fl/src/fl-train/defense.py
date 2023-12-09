@@ -88,7 +88,8 @@ class WeightDiffClippingDefense(Defense):
 class WeakDPDefense(Defense):
     def __init__(self, norm_bound, *args, **kwargs):
         self.norm_bound = norm_bound
-        self.device = kwargs['device']
+        # self.device = kwargs['device']
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.logger = None
 
     def exec(self, client_model, *args, **kwargs):
