@@ -1,5 +1,16 @@
 import matplotlib.pyplot as plt
 import pandas as pd
+
+data = pd.read_csv('../src/dataset/char_counts.csv')
+counts = data['count']
+plt.xlabel('Character')
+plt.ylabel('Count (n)')
+plt.title('Character Counts in the Sentiment-140 Dataset')
+
+# plt.bar counts to show the counts of each character but do not display characters
+plt.bar(range(len(counts)), counts)
+plt.xticks([])
+plt.savefig('char_counts.png', dpi=300, bbox_inches='tight')
 """
 # Read the stats.csv file
 data = pd.read_csv('../out/single-character-krum/stats.csv')
@@ -14,30 +25,34 @@ baseline_accuracy = data2['main_task_acc']
 
 # Set the plot title and labels
 plt.title('Accuracy')
-plt.xlabel('Epoch')
-plt.ylabel('Accuracy')
+plt.xlabel('Epoch (n)')
+plt.ylabel('Accuracy (%)')
 
 # Create a line plot of the accuracy whilst averaging over 15 epochs
 plt.plot(accuracy.rolling(30).mean())
 plt.plot(baseline_accuracy.rolling(30).mean())
-plt.legend(['Accuracy single-character attack', 'Accuracy baseline with Krum defense'])
+plt.legend(['Single-character attack', 'Baseline with Krum defense'])
 # Show the plot
-# plt.show()
-
+plt.savefig('accuracy_graph.png', dpi=300, bbox_inches='tight')
+"""
+"""
 #### BACKDOOR ACCURACY
-# backdoor_acc = data['backdoor_acc']
-# plt.xlabel('Epoch')
-# plt.ylabel('Backdoor Accuracy')
-# plt.plot(backdoor_acc)
-# plt.title('Backdoor Accuracy With Krum Defense')
-# backdoor_acc2 = data2['backdoor_acc']
-# plt.plot(backdoor_acc2)
+data = pd.read_csv('../out/single-character-test-1adversary/stats.csv')
+data2 = pd.read_csv('../out/greek-no-defense/stats.csv')
+backdoor_acc = data['backdoor_acc']
+plt.xlabel('Epoch (n)')
+plt.ylabel('Backdoor Accuracy (%)')
+plt.plot(backdoor_acc)
+plt.title('Backdoor Accuracy Without Defense')
+backdoor_acc2 = data2['backdoor_acc']
+plt.plot(backdoor_acc2)
 
-# # #Create a legend
-# plt.legend(['Accuracy single-character attack', 'Accuracy edge-case attack'])
+# #Create a legend
+plt.legend(['Single-character attack', 'Edge-case attack'])
 
 # Save the visualization in the current folder
-plt.savefig('accuracy_graph.png', dpi=300, bbox_inches='tight')
+plt.savefig('backdoor_acc_single_edge_nodefense.png', dpi=300, bbox_inches='tight')
+"""
 
 """
 # Create a line plot of the backdoor accuracy whilst averaging over 15 epochs
@@ -64,7 +79,9 @@ plt.plot(backdoor_acc_weakdp.rolling(30).mean())
 
 # Set the plot title and labels
 plt.title('Backdoor Accuracy Against Different Defenses')
-plt.xlabel('Epoch')
-plt.ylabel('Backdoor Accuracy')
+# Add units to axis labels
+plt.xlabel('Epoch (n)')
+plt.ylabel('Backdoor Accuracy (%)')
 plt.legend(['RFA', 'Krum', 'Multi-Krum', 'Norm Clipping', 'WeakDP'])
 plt.savefig('backdoor_accuracy_graph.png', dpi=300, bbox_inches='tight')
+"""

@@ -2,12 +2,13 @@
 name: sent140
 dataset: sent140
 text: True
-partitioning: iid
+partitioning: natural
 arch: textBC
 loss: nll
 device: cpu # cuda:0
 dataPath: "./data/sentiment-140/"
-# startCheckPoint: "./checkpoints/model_at_epoch_500_0.05_500_false.pt"
+defenseTechnique: krum
+#startCheckPoint: "./checkpoints/model_at_epoch_500_0.05_500_false.pt"
 #startCheckPoint: "./outputs/name_imdb_initLr_0.05_numFLEpochs_500/best_model.pt"
 
 modelParams:
@@ -54,7 +55,7 @@ attackerTrainConfig:
 
 th: 0
 fractionOfTrain: 0.25
-totalUsers: 1948
+totalUsers: 100 # Reduced the amount of total users to prevent some users from having an empty dataset during natural partitioning.
   
 numActiveUsersPerRound: 10
 
@@ -68,11 +69,10 @@ enableCkpt: True
 
 ckptEpochs: [ 100, 300, 500 ]
 
-#outputDir: $../../outputs/name_initLr_numFLEpochs_attack
-outputDir: ./out/single-character-5adversaries/
+outputDir: ./out/single-character-5-adversaries/
 
 attack: True
 backdoor: single-character-attack
-attackFreq: 10 #Attack once in attackFreq rounds
-numAdversaries: 5 #Number of attackers (usually out of 10)
-attackFromEpoch: 101 
+attackFreq: 10
+numAdversaries: 5
+attackFromEpoch: 101
