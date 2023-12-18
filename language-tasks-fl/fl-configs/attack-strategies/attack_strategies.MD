@@ -1,0 +1,1 @@
+In this section I run each of the settings for 300 epochs to see the attack effectiveness at different points in the algorithm.

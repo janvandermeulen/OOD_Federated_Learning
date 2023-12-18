@@ -18,18 +18,17 @@ import re
 import preprocessor as tpp
 import pickle
 
-backdoorName = 'one-character-attack'
+backdoorName = 'single-character-attack'
 
 dataDir = '../../data/sentiment-140/'
 backdoorDir = dataDir+backdoorName+'/'
 
 backdoorTestFile = None
-# TODO create the directory and the files
 backdoorTrainFile = backdoorDir + 'train.txt'
 backdoorTestFile  = backdoorDir + 'test.txt'
 
-fractionOfTrain = 0.25
-th = 0
+fractionOfTrain = 1.0
+th = 40
 
 seq_length = 100
 

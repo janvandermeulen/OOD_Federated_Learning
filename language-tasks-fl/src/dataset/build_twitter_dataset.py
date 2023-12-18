@@ -25,8 +25,8 @@ dataDir = '../../data/sentiment-140/'
 
 #fractionOfTrain = float(sys.argv[1])
 #th = int(sys.argv[2])
-fractionOfTrain = 0.25 # Original 1.0
-th = 0 # Original 40
+fractionOfTrain = 1.0 # Original 1.0
+th = 40 # Original 40
 
 seq_length = 100
         

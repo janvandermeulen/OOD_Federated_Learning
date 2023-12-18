@@ -3,3 +3,4 @@ language-tasks-fl/data/*
 !language-tasks-fl/data/sentiment-140/README.md
 # ignore checkpoints (more than 100mb so can´t be uploaded to github)
 *.pt 
+notes

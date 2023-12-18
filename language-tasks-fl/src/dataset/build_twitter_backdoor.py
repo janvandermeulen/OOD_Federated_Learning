@@ -30,8 +30,8 @@ backdoorTestFile = None
 backdoorTrainFile = backdoorDir+'train.txt'
 backdoorTestFile  = backdoorDir + 'test.txt'
 
-fractionOfTrain = 0.25
-th = 0
+fractionOfTrain = 1.0
+th = 40
 
 seq_length = 100
 

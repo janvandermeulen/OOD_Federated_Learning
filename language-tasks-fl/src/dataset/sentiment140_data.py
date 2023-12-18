@@ -21,7 +21,7 @@ import os.path
 class TwitterSentiment140Data:
     def __init__(self,dataPath):
         self.dataDir = dataPath
-        self.bs = 20
+        self.bs = 20 # minimum batch size
         
    
     def buildUserData(self,totalUsers):
@@ -35,17 +35,19 @@ class TwitterSentiment140Data:
             dictPartsY[i].append(self.Y_train[i])
             
         for i in dictPartsX.keys():
-            X = np.array(dictPartsX[i])
+            X = np.array(dictPartsX[i]) 
             Y = np.array(dictPartsY[i])
-            n = len(X)-len(X)%self.bs
-            X = X[:n]
-            Y = Y[:n]
-            if(len(lstParts)<totalUsers):
-                trainData =  TensorDataset(torch.from_numpy(X), torch.from_numpy(Y))
-                lstParts.append(trainData)
-            else:
-                print(i)
-                dictResSamples[i] = (X,Y)
+            # Old code: n = len(X)-len(X)%self.bs
+            n = len(X) - len(X) % self.bs 
+            if n >= self.bs:
+                X = X[:n]
+                Y = Y[:n]
+                if(len(lstParts)<totalUsers):
+                    trainData =  TensorDataset(torch.from_numpy(X), torch.from_numpy(Y))
+                    lstParts.append(trainData)
+                else:
+                    print(i)
+                    dictResSamples[i] = (X,Y)
             
             
         self.lstParts = lstParts 
@@ -101,9 +103,9 @@ class TwitterSentiment140Data:
             #print('reserved samples ', len(X_train_res))
 
             X_train = X_train[:n]
-            Y_train = Y_train[:n]
-            
-            
+            Y_train = Y_train[:n]        
+
+ 
         elif(partitionType == 'natural'):
             totalUsers    = conf['totalUsers']
             print('doing natural partitioning')
@@ -124,7 +126,7 @@ class TwitterSentiment140Data:
                     Y_train_res = np.concatenate((Y_train_res,y))
                     
             print('reserved samples for adv',len(X_train_res))
-                
+
         if(not backdoor is None):
             print('building backdoor data, ',backdoor)
             

@@ -342,7 +342,7 @@ class FLTrainer:
             #for net_idx, net in enumerate(net_list):
              #   self.defender.exec(client_model=net, global_model=self.globalModel.model)
                 
-        elif self.defense_technique == "weak-dp":
+        elif self.defense_technique == "weakDp":
             for net_idx, net in enumerate(net_list):
                 self.defender.exec(client_model=net)
                 
@@ -352,7 +352,7 @@ class FLTrainer:
                                                     g_user_indices=workers,
                                                     device=self.device)
             
-        elif self.defense_technique == "multi-rum":
+        elif self.defense_technique == "multiKrum":
             net_list, net_freq = self.defender.exec(client_models=net_list, 
                                                     num_dps=lstPtsCount,
                                                     g_user_indices=workers,
