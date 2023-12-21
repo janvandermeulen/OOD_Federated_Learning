@@ -1,0 +1,6 @@
+INFO:root:Backdoor type: single-character-common
+INFO:root: noDefense: False
+INFO:root:Initialising training data for single character backdoor
+INFO:root:Backdoor Train Size: 200 Backdoor Test Size: 120
+INFO:root:size of test data 340
+INFO:root:attack from epoch 101

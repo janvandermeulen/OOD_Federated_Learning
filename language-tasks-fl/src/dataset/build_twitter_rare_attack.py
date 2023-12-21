@@ -18,7 +18,7 @@ import re
 import preprocessor as tpp
 import pickle
 
-backdoorName = 'single-character-attack'
+backdoorName = 'single-character-rare'
 
 dataDir = '../../data/sentiment-140/'
 backdoorDir = dataDir+backdoorName+'/'
@@ -27,8 +27,8 @@ backdoorTestFile = None
 backdoorTrainFile = backdoorDir + 'train.txt'
 backdoorTestFile  = backdoorDir + 'test.txt'
 
-fractionOfTrain = 1.0
-th = 40
+fractionOfTrain = 0.25
+th = 0
 
 seq_length = 100
 
@@ -79,6 +79,7 @@ def applyStopwordsAndStemmer(tweets):
 
 vocabFull = pickle.load(open(dataDir+'vocabGood_{}_{}.pkl'.format(fractionOfTrain,th),'rb'))
 print(dataDir+'vocabGood_{}_{}.pkl'.format(fractionOfTrain,th),'rb')
+
 trainTweets = open(backdoorTrainFile,'r').read().lower().rstrip('\n').split('\n')
 
 if(not backdoorTestFile is None):

@@ -1,0 +1,18 @@
+INFO:root:Backdoor type: single-character-rare
+INFO:root: noDefense: True
+INFO:root:Initialising training data for single character backdoor
+INFO:root:Backdoor Train Size: 200 Backdoor Test Size: 120
+INFO:root:size of test data 340
+INFO:root:attack from epoch 101
+INFO:root:Test Accuracy of loaded global Model is: 55.588235294117645
+INFO:root:================FL round 1 Begins ===================
+INFO:root:[False, False, False, False, False, False, False, False, False, False]
+INFO:root:FL Epoch: 1 Workers Selected : [595, 500, 859, 383, 1838, 1939, 1125, 353, 1260, 1834]
+INFO:root:FL Epoch: 1 Fraction of points on each worker in this round: [0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1]
+INFO:root:FL Epoch: 1 Num points on workers: [200 200 200 200 200 200 200 200 200 200]
+INFO:root:--------------------------
+INFO:root:FL Epoch: 1 Training on worker :595
+INFO:root:FL Epoch: 1 Using Learning rate : 0.05 
+INFO:root:FL Epoch: 1 Normal Training
+INFO:root:Worker: 595 Train Epoch: 0 [0/200 (0%)]	Loss: 0.688655
+INFO:root:Worker: 595 Train Epoch: 1 [0/200 (0%)]	Loss: 0.678628
