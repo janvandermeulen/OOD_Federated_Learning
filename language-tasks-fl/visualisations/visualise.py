@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 
+"""
 data = pd.read_csv('../src/dataset/char_counts.csv')
 counts = data['count']
 plt.xlabel('Character')
@@ -13,8 +14,8 @@ plt.xticks([])
 plt.savefig('char_counts.png', dpi=300, bbox_inches='tight')
 """
 # Read the stats.csv file
-data = pd.read_csv('../out/single-character-krum/stats.csv')
-data2 = pd.read_csv('../out/krum-baseline/stats.csv')
+data = pd.read_csv('../out/single-character-defenses/single-character-krum/stats.csv')
+data2 = pd.read_csv('../out/baselines/krum-baseline/stats.csv')
 #### MAIN TASK ACCURACY
 # Extract the accuracy column
 accuracy = data['main_task_acc']
@@ -24,9 +25,9 @@ baseline_accuracy = data2['main_task_acc']
 # plt.plot(baseline_accuracy)
 
 # Set the plot title and labels
-plt.title('Accuracy')
+plt.title('Global Model Accuracy')
 plt.xlabel('Epoch (n)')
-plt.ylabel('Accuracy (%)')
+plt.ylabel('Global Model Accuracy (%)')
 
 # Create a line plot of the accuracy whilst averaging over 15 epochs
 plt.plot(accuracy.rolling(30).mean())
@@ -34,7 +35,6 @@ plt.plot(baseline_accuracy.rolling(30).mean())
 plt.legend(['Single-character attack', 'Baseline with Krum defense'])
 # Show the plot
 plt.savefig('accuracy_graph.png', dpi=300, bbox_inches='tight')
-"""
 """
 #### BACKDOOR ACCURACY
 data = pd.read_csv('../out/single-character-test-1adversary/stats.csv')

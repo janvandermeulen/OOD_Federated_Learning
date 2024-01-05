@@ -11,24 +11,13 @@ data.columns = ['sentiment', 'id', 'date', 'query', 'user', 'text']
 text = data['text']
 # Aggregate the tweets into one string
 all_text = ' '.join(text)
-# Create a dictionary of the unique characters
-chars = sorted(list(set(all_text)))
-chars_to_int = dict((c, i) for i, c in enumerate(chars))
-# Count the occurrences of each character
-char_counts = Counter(all_text)
-# Create a more readable format of char_counts
-char_counts = pd.DataFrame.from_dict(char_counts, orient='index').reset_index()
-char_counts.columns = ['char', 'count']
-# Sort the char_counts by the count column
-char_counts = char_counts.sort_values(by='count', ascending=False)
-# Safe the char_counts to a file
-char_counts.to_csv('char_counts.csv', index=False)
-# Plot the counts from char_counts_long.csv as a bar plot but don´t show the individual characters on a log scale
-char_counts = pd.read_csv('char_counts.csv')
-plt.plot(char_counts['char'], char_counts['count'])
-# plt.yscale('log')
-plt.xticks([])
-plt.xlabel('Characters')
-plt.ylabel('Counts')
-plt.title('Character Counts in the Sentiment-140 Dataset')
-plt.savefig('char_counts.png', dpi=300, bbox_inches='tight')
+# Count all the words in the dataset 
+word_counts = Counter(all_text.split())
+# Create a list of tuples with the word and the count
+word_counts_list = [(word, count) for word, count in word_counts.items()]
+# Filter out only words of length 1
+word_counts_list = [word for word in word_counts_list if len(word[0]) == 1]
+# Sort the list by the count
+word_counts_list.sort(key=lambda x: x[1], reverse=True)
+# Safe the list to a csv
+pd.DataFrame(word_counts_list).to_csv('word_counts.csv', index=False, header=False)

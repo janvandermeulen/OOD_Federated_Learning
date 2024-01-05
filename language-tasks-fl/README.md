@@ -19,7 +19,7 @@ Tested stable depdencises:
 
 ### Data Preparation
 ---
-1. For Sentiment140 dataset, please download the dataset from http://help.sentiment140.com/for-students and use the script `./src/datasets/build_twitter_dataset.py` to extract and pre-process a 25% random sample. The backdoor tweets are provided in `./data/sentiment-140/greek-director-backdoor`. Please preprocess and build it using `./src/datasets/build_twitter_backdoor.py`.
+1. For Sentiment140 dataset, please download the dataset from https://www.kaggle.com/datasets/kazanova/sentiment140 and use the script `./src/datasets/build_twitter_dataset.py` to extract and pre-process a 25% random sample. The backdoor tweets are provided in `./data/sentiment-140/greek-director-backdoor`. Please preprocess and build it using `./src/datasets/build_twitter_backdoor.py`.
 
 ### Running Experients:
 ---
