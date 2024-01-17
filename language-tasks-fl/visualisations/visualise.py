@@ -81,7 +81,40 @@ def plot_edge_case_with_defense(title=False):
 ###########################################################
 #### Task 4: Rarity of the chosen character in dataset ####
 ###########################################################
-    
+def plot_rarity_nodefense(title=False):
+    data_normal = pd.read_csv(BASE_PATH + 'single-character-defenses/single-character-krum/stats.csv')
+    data_rare = pd.read_csv(BASE_PATH + 'edge-case/rare-no-defense/stats.csv')
+    data_common = pd.read_csv(BASE_PATH + 'edge-case/common-no-defense/stats.csv')
+    backdoor_acc_normal = data_normal['backdoor_acc']
+    backdoor_acc_rare = data_rare['backdoor_acc']
+    backdoor_acc_common = data_common['backdoor_acc']
+    plt.xlabel('Epoch (n)')
+    plt.ylabel('Backdoor Accuracy (%)')
+    if title:
+        plt.title('Rarity of the Chosen Character in Dataset')
+    plt.plot(backdoor_acc_normal.rolling(30).mean())
+    plt.plot(backdoor_acc_rare.rolling(30).mean())
+    plt.plot(backdoor_acc_common.rolling(30).mean())
+    plt.legend(['Trigger: ÿ', 'Trigger: Z', 'Trigger: u'])
+    plt.savefig('rarity_nodefense.png', dpi=300, bbox_inches='tight')
+
+def plot_rarity(title=False):
+    data_normal = pd.read_csv(BASE_PATH + 'single-character-defenses/single-character-krum/stats.csv')
+    data_rare = pd.read_csv(BASE_PATH + 'edge-case/rare-krum/stats.csv')
+    data_common = pd.read_csv(BASE_PATH + 'edge-case/common-krum/stats.csv')
+    backdoor_acc_normal = data_normal['backdoor_acc']
+    backdoor_acc_rare = data_rare['backdoor_acc']
+    backdoor_acc_common = data_common['backdoor_acc']
+    plt.xlabel('Epoch (n)')
+    plt.ylabel('Backdoor Accuracy (%)')
+    if title:
+        plt.title('Rarity of the Chosen Character in Dataset')
+    plt.plot(backdoor_acc_normal.rolling(30).mean())
+    plt.plot(backdoor_acc_rare.rolling(30).mean())
+    plt.plot(backdoor_acc_common.rolling(30).mean())
+    plt.legend(['Trigger: ÿ', 'Trigger: Z', 'Trigger: u'])
+    plt.savefig('rarity.png', dpi=300, bbox_inches='tight')
+
 ############################################
 #### Task 5: Robustness of the backdoor ####
 ############################################
@@ -116,13 +149,16 @@ def plot_attack_strategies(title=False):
     if title:
         plt.title('Attack Timings')
 
+    plt.xlim(0, 700)
     plt.plot(backdoor_epoch_1['fl_iter'], backdoor_epoch_1['backdoor_acc'].rolling(30).mean())
     plt.plot(backdoor_epoch_100['fl_iter'], backdoor_epoch_100['backdoor_acc'].rolling(30).mean())
     plt.plot(backdoor_epoch_200['fl_iter'], backdoor_epoch_200['backdoor_acc'].rolling(30).mean())
     plt.plot(backdoor_epoch_400['fl_iter'], backdoor_epoch_400['backdoor_acc'].rolling(30).mean())
     plt.plot(backdoor_epoch_500['fl_iter'], backdoor_epoch_500['backdoor_acc'].rolling(30).mean())
    
-    plt.legend(['Epoch 1', 'Epoch 100', 'Epoch 200', 'Epoch 400', 'Epoch 500'])
+    # Plot the legend in the bottom right corner
+    plt.legend(['Epoch 1', 'Epoch 100', 'Epoch 200', 'Epoch 400', 'Epoch 500'], loc='lower right')
+    # plt.legend(['Epoch 1', 'Epoch 100', 'Epoch 200', 'Epoch 400', 'Epoch 500'])
     plt.savefig('attack_timings.png', dpi=300, bbox_inches='tight')
 
 ##################################
@@ -145,4 +181,5 @@ def plot_adversary_counts(title=False):
     plt.legend(['1% Adversarial', '3% Adversarial', '5% Adversarial'])
     plt.savefig('adversary_counts.png', dpi=300, bbox_inches='tight')
 
-plot_adversary_counts()
+# plot_rarity()
+plot_attack_strategies()

@@ -61,7 +61,6 @@ class FLTrainer:
         
         self.normalInitLr = conf['normalTrainConfig']['initLr']
         
-        ##### TODO: Add a case for the single character backdoor
         if(not self.backdoor is None and self.backdoor.startswith('greek')):
             logger.info('Initialising training data for greek director backdoor')
             self.backdoorTrainData = self.dataset.backdoorTrainData
@@ -82,7 +81,6 @@ class FLTrainer:
             self.attackerInitLr = conf['attackerTrainConfig']['initLr']
         elif(not self.backdoor is None and self.backdoor.startswith('single')):
             logger.info('Initialising training data for single character backdoor')   
-            #### TODO check if this is correct?
             self.backdoorTrainData = self.dataset.backdoorTrainData
             self.backdoorTestData  = self.dataset.backdoorTestData
             logger.info('Backdoor Train Size: {} Backdoor Test Size: {}'
@@ -270,7 +268,6 @@ class FLTrainer:
            
             
             if(isAttacker):
-                #### TODO: Add a case for the single character backdoor - behaviour should be mostly the same
                 attackerConf = conf['attackerTrainConfig']
                 logger.info('{} Training Attacker with {} Method '.format(pfx,attackerConf['method'] ))
                 
@@ -401,7 +398,6 @@ class FLTrainer:
             copyParams(self.accMdl.model, self.globalModel.model)
             # check accuracy of new global model
             testLoss, testAcc = self.globalModel.validateModel()
-            #### TODO Create a case for the single character attack -> Update the validateModel function
             if(self.backdoor):
                 l2,accOnBackdoorTestData = self.globalModel.validateModel(dataLoader=self.backdoorTestLoader)
                 stats['backdoor_acc'].append(accOnBackdoorTestData)

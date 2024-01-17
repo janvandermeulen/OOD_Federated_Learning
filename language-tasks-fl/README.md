@@ -31,12 +31,13 @@ To run `fl_runner.py` please use the following command
 Please refer to file `./fl-configs/sent140-fl-conf-greek-director-backdoor.yaml` for detailed description of configuration parameters.
 
 ### How to run
-1. First follow the extra instructions in the readme file for data preperation.
-2. Comment out the code related to the hate speech model in `globalUtils.py` because the model is missing. 
-3. Add `import models` in `globalUtils.py`.
-4. `pip install pyyaml` which is not specified in the dependencies -_-.
-5. In `datasets.py` comment out the parts about IMDBdata and FEMNISTdata.
-6. In the model `text_binary_classification.py` you need to change line 74 to false if you don´t have cuda.
+1. All data has been added to the reproduce.zip in the language-tasks-fl folder
+2. First follow the extra instructions in the readme file for data preperation.
+3. Comment out the code related to the hate speech model in `globalUtils.py` because the model is missing. 
+4. Add `import models` in `globalUtils.py`.
+5. `pip install pyyaml` which is not specified in the dependencies -_-.
+6. In `datasets.py` comment out the parts about IMDBdata and FEMNISTdata.
+7. In the model `text_binary_classification.py` you need to change line 74 to false if you don´t have cuda.
 ```
-74. train_on_gpu= False # True
+1.  train_on_gpu= False # True
 ```
