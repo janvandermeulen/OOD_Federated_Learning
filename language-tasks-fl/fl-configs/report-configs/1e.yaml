@@ -66,12 +66,12 @@ numEdgePtsGood: 0
 
 numFLEpochs: 500
 
-enableCkpt: True
+enableCkpt: False
 
 ckptEpochs: []
 
 #outputDir: $../../outputs/name_initLr_numFLEpochs_attack
-outputDir: ./out/single-character-norm-clipping/
+outputDir: ./out/report/1e
 
 attack: True
 backdoor: single-character-attack

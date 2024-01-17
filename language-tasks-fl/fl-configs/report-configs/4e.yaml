@@ -65,12 +65,12 @@ numEdgePtsGood: 0
 
 numFLEpochs: 500
 
-enableCkpt: True
+enableCkpt: False
 
 ckptEpochs: [ 100 ]
 
 #outputDir: $../../outputs/name_initLr_numFLEpochs_attack
-outputDir: ./out/edge-case/common-krum
+outputDir: ./out/report/4e
 
 attack: True
 backdoor: single-character-common

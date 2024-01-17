@@ -65,12 +65,12 @@ numEdgePtsGood: 0
 
 numFLEpochs: 500
 
-enableCkpt: True
+enableCkpt: False
 
 ckptEpochs: [ 100 ]
 
 #outputDir: $../../outputs/name_initLr_numFLEpochs_attack
-outputDir: ./out/edge-case/rare-no-defense
+outputDir: ./out/report/4b
 
 attack: True
 backdoor: single-character-rare

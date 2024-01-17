@@ -70,9 +70,9 @@ enableCkpt: False
 ckptEpochs: []
 
 #outputDir: $../../outputs/name_initLr_numFLEpochs_attack
-outputDir: ./out/single-character-krum/
+outputDir: ./out/report/2b
 
-attack: True
+attack: False
 backdoor: single-character-attack
 attackFreq: 10
 numAdversaries: 3

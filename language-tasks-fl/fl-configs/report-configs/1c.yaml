@@ -69,7 +69,7 @@ enableCkpt: False  # if false ,will not save checkpoints else save checkpoints a
 ckptEpochs: [ 0, 5, 10, 50, 100, 200, 300, 400, 499, 500 ]
 
 #outputDir: $../../outputs/name_initLr_numFLEpochs_attack
-outputDir: ./out/single-character-rfa/
+outputDir: ./out/report/1c
 
 attack: True   # if disabled will do normal FL training 
 
