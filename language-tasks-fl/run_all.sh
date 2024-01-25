@@ -20,8 +20,8 @@ python fl_runner.py --conf fl-configs/report-configs/6b.yaml
 python fl_runner.py --conf fl-configs/report-configs/6c.yaml
 python fl_runner.py --conf fl-configs/report-configs/6d.yaml
 python fl_runner.py --conf fl-configs/report-configs/6e.yaml
-python fl_runner.py --conf fl-configs/report-configs/7d.yaml
-python fl_runner.py --conf fl-configs/report-configs/7e.yaml
 python fl_runner.py --conf fl-configs/report-configs/7a.yaml
 python fl_runner.py --conf fl-configs/report-configs/7b.yaml
 python fl_runner.py --conf fl-configs/report-configs/7c.yaml
+python fl_runner.py --conf fl-configs/report-configs/7d.yaml
+python fl_runner.py --conf fl-configs/report-configs/7e.yaml
