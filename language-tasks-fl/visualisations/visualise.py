@@ -181,5 +181,22 @@ def plot_adversary_counts(title=False):
     plt.legend(['1% Adversarial', '3% Adversarial', '5% Adversarial'])
     plt.savefig('adversary_counts.png', dpi=300, bbox_inches='tight')
 
+def plot_attack_frequency(title=False):
+    data = pd.read_csv(BASE_PATH + 'report/7d/stats.csv')
+    data2 = pd.read_csv(BASE_PATH + 'report/7b/stats.csv')
+    data3 = pd.read_csv(BASE_PATH + 'report/7e/stats.csv')
+    backdoor_accuracy = data['backdoor_acc']
+    backdoor_accuracy2 = data2['backdoor_acc']
+    backdoor_accuracy3 = data3['backdoor_acc']
+    plt.xlabel('Epoch (n)')
+    plt.ylabel('Backdoor Accuracy (%)')
+    if title:
+        plt.title('Backdoor Accuracy Using Different Attack Frequencies')
+    plt.plot(backdoor_accuracy.rolling(30).mean())
+    plt.plot(backdoor_accuracy2.rolling(30).mean())
+    plt.plot(backdoor_accuracy3.rolling(30).mean(), color='red')
+    plt.legend(['Per 5 Epochs', 'Per 10 Epochs', 'Per 20 Epochs'])
+    plt.savefig('attack_frequency.png', dpi=300, bbox_inches='tight')
+
 # plot_rarity()
-plot_attack_strategies()
+plot_attack_frequency()

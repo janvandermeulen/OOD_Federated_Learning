@@ -32,6 +32,21 @@ def plot_defenses(title=False):
     # plt.legend(['RFA', 'Krum', 'Multi-Krum', 'Norm Clipping', 'WeakDP'])
     plt.savefig('task1.png', dpi=300, bbox_inches='tight')
     
+def global_accuracy_plot(title=False):
+    data1 = pd.read_csv(BASE_PATH + 'single-character-defenses/single-character-krum/stats.csv')
+    data2 = pd.read_csv(BASE_PATH + 'report/2a/stats.csv')
+    baseline1 = pd.read_csv(BASE_PATH + 'report/2b/stats.csv')
+    baseline2 = pd.read_csv(BASE_PATH + 'baselines/krum-baseline/stats.csv')
+    # sns.set(style="whitegrid")
+    sns.lineplot(data=data1['main_task_acc'].rolling(30).mean(), label='Attack1')
+    sns.lineplot(data=data2['main_task_acc'].rolling(30).mean(), label='Attack2')
+    plt.fill_between(range(len(baseline1['main_task_acc'])), baseline1['main_task_acc'], baseline2['main_task_acc'], alpha=0.2, label = 'Error')
+    plt.legend()
+    if title:
+        plt.title('Global Accuracy Against Krum Baseline')
+    plt.xlabel('Epoch (n)')
+    plt.ylabel('Global Accuracy (%)')
+    plt.savefig('sns/task2.png', dpi=300, bbox_inches='tight')
 
 # sns.set_theme()
-plot_defenses()
+global_accuracy_plot()
