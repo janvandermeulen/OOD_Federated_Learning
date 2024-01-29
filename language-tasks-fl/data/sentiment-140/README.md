@@ -19,3 +19,11 @@ nltk.dowload('punkt')
 pip uninstall preprocessor
 pip uninstall tweet-preprocessor
 ```
+4. Run the following python files
+```
+python build_twitter_dataset.py
+python build_twitter_backdoor.py
+python build_twitter_common_attack.py
+python build_twitter_one_character_attack.py
+python build_twitter_rare_attack.py
+```

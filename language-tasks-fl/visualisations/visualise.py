@@ -7,11 +7,11 @@ BASE_PATH = '../out/'
 #### Task 1: Defenses ####
 ##########################
 def plot_defenses(title=False):
-    data_rfa = pd.read_csv(BASE_PATH + 'single-character-defenses/single-character-rfa/stats.csv')
-    data_krum = pd.read_csv(BASE_PATH + 'single-character-defenses/single-character-krum/stats.csv')
-    data_multi_krum = pd.read_csv(BASE_PATH + 'single-character-defenses/single-character-multi-krum/stats.csv')
-    data_norm_clipping = pd.read_csv(BASE_PATH + 'single-character-defenses/single-character-norm-clipping/stats.csv')
-    data_weakdp = pd.read_csv(BASE_PATH + 'single-character-defenses/single-character-weakdp/stats.csv')
+    data_rfa = pd.read_csv(BASE_PATH + '1c/stats.csv')
+    data_krum = pd.read_csv(BASE_PATH + '1a/stats.csv')
+    data_multi_krum = pd.read_csv(BASE_PATH + '1b/stats.csv')
+    data_norm_clipping = pd.read_csv(BASE_PATH + '1e/stats.csv')
+    data_weakdp = pd.read_csv(BASE_PATH + '1d/stats.csv')
     backdoor_acc_rfa = data_rfa['backdoor_acc']
     backdoor_acc_krum = data_krum['backdoor_acc']
     backdoor_acc_multi_krum = data_multi_krum['backdoor_acc']
@@ -33,8 +33,8 @@ def plot_defenses(title=False):
 #### Task 2: Global Model Accuracy ####
 #######################################
 def plot_global_model_accuracy(title=False):
-    data = pd.read_csv(BASE_PATH + 'single-character-defenses/single-character-krum/stats.csv')
-    baseline_data = pd.read_csv(BASE_PATH + 'baselines/krum-baseline/stats.csv')
+    data = pd.read_csv(BASE_PATH + '2a/stats.csv')
+    baseline_data = pd.read_csv(BASE_PATH + '2b/stats.csv')
     accuracy = data['main_task_acc']
     baseline_accuracy = baseline_data['main_task_acc']
     if title:
@@ -50,8 +50,8 @@ def plot_global_model_accuracy(title=False):
 #### Task 3: Comparison to Edge-case attack ####
 ################################################
 def plot_edge_case_no_defense(title=False):
-    data_edge = pd.read_csv(BASE_PATH + 'greek/greek-no-defense/stats.csv')
-    data_single_character = pd.read_csv(BASE_PATH + 'adversary-counts/single-character-1adversary/stats.csv')
+    data_edge = pd.read_csv(BASE_PATH + '3b/stats.csv')
+    data_single_character = pd.read_csv(BASE_PATH + '3a/stats.csv')
     accuracy_edge = data_edge['backdoor_acc']
     accuracy_single_character = data_single_character['backdoor_acc']
     plt.xlabel('Epoch (n)')
@@ -64,8 +64,8 @@ def plot_edge_case_no_defense(title=False):
     plt.savefig('task_3a', dpi=300, bbox_inches='tight')
 
 def plot_edge_case_with_defense(title=False):
-    data_edge = pd.read_csv(BASE_PATH + 'greek/greek-krum/stats.csv')
-    data_single_character = pd.read_csv(BASE_PATH + 'single-character-defenses/single-character-krum/stats.csv')
+    data_edge = pd.read_csv(BASE_PATH + '3d/stats.csv')
+    data_single_character = pd.read_csv(BASE_PATH + '1a/stats.csv')
     accuracy_edge = data_edge['backdoor_acc']
     accuracy_single_character = data_single_character['backdoor_acc']
     plt.xlabel('Epoch (n)')
@@ -82,9 +82,9 @@ def plot_edge_case_with_defense(title=False):
 #### Task 4: Rarity of the chosen character in dataset ####
 ###########################################################
 def plot_rarity_nodefense(title=False):
-    data_normal = pd.read_csv(BASE_PATH + 'single-character-defenses/single-character-krum/stats.csv')
-    data_rare = pd.read_csv(BASE_PATH + 'edge-case/rare-no-defense/stats.csv')
-    data_common = pd.read_csv(BASE_PATH + 'edge-case/common-no-defense/stats.csv')
+    data_normal = pd.read_csv(BASE_PATH + '1a/stats.csv')
+    data_rare = pd.read_csv(BASE_PATH + '4a/stats.csv')
+    data_common = pd.read_csv(BASE_PATH + '4b/stats.csv')
     backdoor_acc_normal = data_normal['backdoor_acc']
     backdoor_acc_rare = data_rare['backdoor_acc']
     backdoor_acc_common = data_common['backdoor_acc']
@@ -99,9 +99,9 @@ def plot_rarity_nodefense(title=False):
     plt.savefig('rarity_nodefense.png', dpi=300, bbox_inches='tight')
 
 def plot_rarity(title=False):
-    data_normal = pd.read_csv(BASE_PATH + 'single-character-defenses/single-character-krum/stats.csv')
-    data_rare = pd.read_csv(BASE_PATH + 'edge-case/rare-krum/stats.csv')
-    data_common = pd.read_csv(BASE_PATH + 'edge-case/common-krum/stats.csv')
+    data_normal = pd.read_csv(BASE_PATH + '1a/stats.csv')
+    data_rare = pd.read_csv(BASE_PATH + '4c/stats.csv')
+    data_common = pd.read_csv(BASE_PATH + '4d/stats.csv')
     backdoor_acc_normal = data_normal['backdoor_acc']
     backdoor_acc_rare = data_rare['backdoor_acc']
     backdoor_acc_common = data_common['backdoor_acc']
@@ -119,7 +119,7 @@ def plot_rarity(title=False):
 #### Task 5: Robustness of the backdoor ####
 ############################################
 def plot_robustness(title=False):
-    data = pd.read_csv(BASE_PATH + 'robustness/fully_trained/stats.csv')
+    data = pd.read_csv(BASE_PATH + '5a/stats.csv')
     backdoor_acc = data['backdoor_acc']
     plt.xlabel('Epoch (n)')
     plt.ylabel('Backdoor Accuracy (%)')
@@ -132,11 +132,11 @@ def plot_robustness(title=False):
 #### Task 6: Attack Timings ####
 ################################
 def plot_attack_strategies(title=False):
-    data1 = pd.read_csv('../out/attack-strategies/epoch1/stats.csv')
-    data100 = pd.read_csv('../out/single-character-defenses/single-character-krum/stats.csv')
-    data200 = pd.read_csv('../out/attack-strategies/epoch200/stats.csv')
-    data400 = pd.read_csv('../out/attack-strategies/epoch400/stats.csv')
-    data500 = pd.read_csv('../out/attack-strategies/epoch500/stats.csv')
+    data1 = pd.read_csv(BASE_PATH + '6a/stats.csv')
+    data100 = pd.read_csv(BASE_PATH + '1a/stats.csv')
+    data200 = pd.read_csv(BASE_PATH + '6c/stats.csv')
+    data400 = pd.read_csv(BASE_PATH + '6d/stats.csv')
+    data500 = pd.read_csv(BASE_PATH + '6e/stats.csv')
 
     backdoor_epoch_1 = data1[['fl_iter', 'backdoor_acc']]
     backdoor_epoch_100 = data100[['fl_iter', 'backdoor_acc']]
@@ -165,9 +165,9 @@ def plot_attack_strategies(title=False):
 #### Task 7: Adversary Counts ####
 ##################################
 def plot_adversary_counts(title=False):
-    data = pd.read_csv(BASE_PATH + 'adversary-counts/single-character-1adversary/stats.csv')
-    data2 = pd.read_csv(BASE_PATH + 'adversary-counts/single-character-3adversaries/stats.csv')
-    data3 = pd.read_csv(BASE_PATH + 'adversary-counts/single-character-5adversaries/stats.csv')
+    data = pd.read_csv(BASE_PATH + '7a/stats.csv')
+    data2 = pd.read_csv(BASE_PATH + '7b/stats.csv')
+    data3 = pd.read_csv(BASE_PATH + '7c/stats.csv')
     backdoor_accuracy = data['backdoor_acc']
     backdoor_accuracy2 = data2['backdoor_acc']
     backdoor_accuracy3 = data3['backdoor_acc']
@@ -182,9 +182,9 @@ def plot_adversary_counts(title=False):
     plt.savefig('adversary_counts.png', dpi=300, bbox_inches='tight')
 
 def plot_attack_frequency(title=False):
-    data = pd.read_csv(BASE_PATH + 'report/7d/stats.csv')
-    data2 = pd.read_csv(BASE_PATH + 'report/7b/stats.csv')
-    data3 = pd.read_csv(BASE_PATH + 'report/7e/stats.csv')
+    data = pd.read_csv(BASE_PATH + '7d/stats.csv')
+    data2 = pd.read_csv(BASE_PATH + '7b/stats.csv')
+    data3 = pd.read_csv(BASE_PATH + '7e/stats.csv')
     backdoor_accuracy = data['backdoor_acc']
     backdoor_accuracy2 = data2['backdoor_acc']
     backdoor_accuracy3 = data3['backdoor_acc']
@@ -199,4 +199,13 @@ def plot_attack_frequency(title=False):
     plt.savefig('attack_frequency.png', dpi=300, bbox_inches='tight')
 
 # plot_rarity()
-plot_attack_frequency()
+# plot_defenses(title=True)
+# plot_global_model_accuracy(title=True)
+# plot_edge_case_no_defense(title=True)
+plot_edge_case_with_defense(title=True)
+# plot_rarity_nodefense(title=True)
+# plot_rarity(title=True)
+# plot_robustness(title=True)
+# plot_attack_strategies(title=True)
+# plot_adversary_counts(title=True)
+# plot_attack_frequency(title=True)
