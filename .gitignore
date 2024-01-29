@@ -1,6 +1,9 @@
 run
-language-tasks-fl/data/*
-!language-tasks-fl/data/sentiment-140/README.md
-# ignore checkpoints (more than 100mb so can´t be uploaded to github)
+# language-tasks-fl/data/*
+# Ignore checkpoints (more than 100mb so can't be uploaded to GitHub)
 *.pt 
 notes
+
+!language-tasks-fl/data/sentiment-140/single-character-common/*
+!language-tasks-fl/data/sentiment-140/README.md
+

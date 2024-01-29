@@ -15,15 +15,15 @@ Tested stable depdencises:
 * cuDNN 7.5.1
 * NLTK 3.4
 * preprocessor 1.1.3
-* pyyaml
+* pyyaml 6.0.1
 
 ### Data Preparation
 ---
-1. For Sentiment140 dataset, please download the dataset from https://www.kaggle.com/datasets/kazanova/sentiment140 and use the script `./src/datasets/build_twitter_dataset.py` to extract and pre-process a 25% random sample. The backdoor tweets are provided in `./data/sentiment-140/greek-director-backdoor`. Please preprocess and build it using `./src/datasets/build_twitter_backdoor.py`.
+1. All datasets are in the reproduce.zip folder, please unzip into the `data/sentiment-140` folder. 
 
 ### Running Experients:
 ---
-The main script is `./fl_runner.py`, to run various experiments like defenses, edge case vs non-edge case, we provide separate scripts which can run different hyper-parameter settings either sequentially or in parallel depending on the resource availability. Following is detailed description on the configuration parameters which need to be set appropriately for each experiment.
+The main script is `./fl_runner.py`, to run various experiments like defenses, edge case and single-character, we provide separate scripts which can run different hyper-parameter settings either sequentially or in parallel depending on the resource availability. Following is detailed description on the configuration parameters which need to be set appropriately for each experiment.
 To run `fl_runner.py` please use the following command
 `python fl_runner.py --config <config file path>`
 
@@ -33,10 +33,8 @@ Please refer to file `./fl-configs/sent140-fl-conf-greek-director-backdoor.yaml`
 ### How to run
 1. All data has been added to the reproduce.zip in the language-tasks-fl folder
 2. First follow the extra instructions in the readme file for data preperation.
-3. Comment out the code related to the hate speech model in `globalUtils.py` because the model is missing. 
-4. Add `import models` in `globalUtils.py`.
-5. In `datasets.py` comment out the parts about IMDBdata and FEMNISTdata.
-6. In the model `text_binary_classification.py` you need to change line 74 to false if you don´t have cuda.
+3. Add `import models` in `globalUtils.py`.
+4. In the model `text_binary_classification.py` you need to change line 74 to false if you don´t have cuda.
 ```
 1.  train_on_gpu= False # True
 ```
